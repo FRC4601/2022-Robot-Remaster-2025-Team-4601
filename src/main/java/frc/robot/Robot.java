@@ -60,7 +60,7 @@ public class Robot extends TimedRobot {
   private DifferentialDrive m_drive;
 
   //Controls
-  private final Joystick leftstick = new Joystick(0);
+  //private final Joystick leftstick = new Joystick(0); //Uncomment if swapping drive to Tank Drive from Arcade -- Comment out if swapping back to Arcade
   private final Joystick rightstick = new Joystick(1);
   private final XboxController xbox = new XboxController(2);
 
@@ -171,7 +171,7 @@ public class Robot extends TimedRobot {
     stagingMotor.setInverted(false);
 
     //SHOOTER
-    leftshootMotor.setInverted(false);
+    //leftshootMotor.setInverted(false);
     rightshootMotor.setControl(new Follower(1, true));
 
     //EXIT SHOOTER
@@ -252,8 +252,13 @@ public class Robot extends TimedRobot {
     //ENCODER
     SmartDashboard.putNumber("Pivot Encoder Angle", armEncoder.getRaw());
 
-    //DRIVE
+    //DRIVE - ARCADE - Comment out if using Tank Drive
     m_drive.arcadeDrive(rightstick.getY(), rightstick.getX());
+
+    //DRIVE - TANK - Comment out if using Arcade Drive
+    //m_drive.tankDrive(leftstick.getY(), rightstick.getY()); 
+
+
 
     //PIVOT - OLD PIVOT CODE BEFORE PID WAS ADDED
     // if (leftstick.getRawButton(9)){
